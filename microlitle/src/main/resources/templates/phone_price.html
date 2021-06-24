@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <title>手机价格</title>
+
+    <!--Begin  Page Level  CSS -->
+    <link href="plugins/morris-chart/morris.css" rel="stylesheet">
+    <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"/>
+     <!--End  Page Level  CSS -->
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+    <![endif]-->
+     <style>
+      .white-box {
+            /* position: relative; */
+            width: 1500px;
+            height: 800px;
+            margin: 15px 15px  15px 15px;
+            /* border: solid 1px #c1c1c1; */
+      }
+  
+    </style>
+</head>
+
+<body class="sticky-header">  
+
+
+    <!--Start left side Menu-->
+    <div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a href="/"><img src="images/logo.png" alt=""></a>
+        </div>
+
+        <div class="logo-icon text-center">
+            <a href="/"><img src="images/logo-icon.png" alt=""></a>
+        </div>
+        <!--logo-->
+
+        <div class="left-side-inner">
+            <!--Sidebar nav-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li class="menu-list nav-active"><a href="/"><i class="icon-home"></i> <span>用户画像</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/"> 性别</a></li>
+                        <!-- <li><a href="dashboard2"> Dashboard 2</a></li> -->
+                        <!-- <li><a href="sex"> 性别</a></li> -->
+                        <li><a href="/area"> 区域</a></li>
+                        <li><a href="/phone_board"> 手机品牌</a></li>
+                        <li  class="active"><a href="/phone_price"> 手机价格</a></li>
+                        <!-- <li><a href="dashboard2"> Dashboard 2</a></li> -->
+                    </ul>
+                </li>
+                <li class="menu-list"><a href="#"><i class="icon-layers"></i> <span>数据分析</span></a>
+                    <ul class="sub-menu-list">
+                        <li><a href="/learn"> 学习</a></li>
+                        <li><a href="/life"> 生活</a></li>
+                        <li><a href="/communication">社交</a></li>
+                        <li><a href="/entertainment">娱乐</a></li>
+                        <li><a href="/consumption">消费</a></li>
+                    </ul>
+                </li>
+                <li class="menu-list"><a href="#"><i class="icon-lock"></i> <span>文件上传</span></a>
+                    <ul class="sub-menu-list">
+                       <li><a href="/upload"> 文件上传 </a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+    <!--End left side menu-->
+    
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <form class="searchform">
+                <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+            </form>
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    <li>
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img src="images/users/avatar-6.jpg" alt="" />
+                            micro
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                          <li> <a href="#"> <i class="fa fa-wrench"></i> 设置 </a> </li>
+                          <li> <a href="#"> <i class="fa fa-info"></i> 帮助 </a> </li>
+                          <li> <a href="#"> <i class="fa fa-lock"></i> 登出 </a> </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+              
+          <!--Start Page Title-->
+           <div class="page-title-box">
+                <h4 class="page-title">手机价格</h4>
+                <div class="clearfix"></div>
+             </div>
+              <!--End Page Title-->          
+           
+                
+           
+                  <!--Start row-->
+                  <div class="row">
+                     <div class="col-md-6">
+                      <div class="white-box">
+                          <h2 class="header-title">手机价格</h2>
+                             <div class="canvas-chart">
+                              <canvas id="polarChart" height="150"></canvas>
+                      </div>
+                      </div>
+                  </div><!-- /col-md-6-->
+                  </div>
+                  <!--End row-->
+                
+			   
+			    </div>
+        <!-- End Wrapper-->
+
+
+        <!--Start  Footer -->
+        <footer class="footer-main">Copyright &copy; 2021.microlitle All rights reserved.</footer>	
+         <!--End footer -->
+
+       </div>
+      <!--End main content -->
+    <script th:inline = "javascript">
+        var p1000_2000=    [[${p1000_2000}]];
+        var p2000_3000= [[${p2000_3000}]];
+        var p3000_4000=    [[${p3000_4000}]];
+        var p4000_5000= [[${p4000_5000}]];
+        var p5000= [[${p5000}]];
+
+    </script>
+
+
+    <!--Begin core plugin -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="plugins/moment/moment.js"></script>
+    <script  src="js/jquery.slimscroll.js "></script>
+    <script src="js/jquery.nicescroll.js"></script>
+    <script src="js/functions.js"></script>
+    <!-- End core plugin -->
+    
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+  <script src="plugins/chart-js/Chart.js"></script>
+    <script src="pages/chartjs-custom.phone_price.js"></script>
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+   
+
+
+</body>
+
+</html>
